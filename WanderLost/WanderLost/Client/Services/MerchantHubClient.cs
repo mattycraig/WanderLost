@@ -8,7 +8,7 @@ namespace WanderLost.Client.Services
     [AutoHubServer(typeof(IMerchantHubServer))]
     public partial class MerchantHubClient : IAsyncDisposable
     {
-        public HubConnection HubConnection {get; init; }
+        public HubConnection HubConnection { get; init; }
 
         public MerchantHubClient(IConfiguration configuration)
         {
@@ -17,7 +17,7 @@ namespace WanderLost.Client.Services
                 .WithAutomaticReconnect(new[] {
                     TimeSpan.FromSeconds(10),
                     TimeSpan.FromSeconds(30),
-                    TimeSpan.FromMinutes(1), 
+                    TimeSpan.FromMinutes(1),
                     TimeSpan.FromMinutes(5),
                     TimeSpan.FromMinutes(5),
                 })
@@ -28,7 +28,7 @@ namespace WanderLost.Client.Services
 
         public async ValueTask DisposeAsync()
         {
-            if(HubConnection is not null)
+            if (HubConnection is not null)
             {
                 await HubConnection.DisposeAsync();
             }
